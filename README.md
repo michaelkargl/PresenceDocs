@@ -1,8 +1,8 @@
-# Website
+# Presence Docs
 
-<div style="width:100%;text-align:center">
-    <img src="./static/img/logo.svg" />
-    </br>
+<div align="center">
+    ![]("./static/img/logo.svg")
+
     This website is using Docusaurus, a modern static website generator.
 </div>
 <br/>
@@ -16,6 +16,24 @@ There are 3 ways of consuming these docs
 1. Run the full docusaurus instance and browse them using the web-interface
 1. Export the docs to PDF
 1. [Browse the Markdown files manually](./docs)
+
+
+## Requirements
+
+To run or extend the docs, you will have some tools installed. We recommend
+checking out the CI pipeline for details on base setup and versions.
+
+* [CI Pipeline](/.gitlab-ci.yml)
+* VSCode
+* Node
+* NPM
+
+See also:
+
+* [Docusaurus Requirements]
+
+[Docusaurus Requirements]: https://docusaurus.io/docs/installation#requirements
+
 
 ## Installation
 
@@ -60,5 +78,18 @@ npm run build-pdf
 within a separate window.
 
 
+## Updating the application
+
+See the [Docusaurus Docs][Docusaurus Updating] on how to update the application. This is done in mainly a handful of steps:
+
+1. Find the version to update to using npm: [@docusaurus/core]
+1. Adjust the rest of the `@docusaurus` packages in `package.json` to reflect that version
+1. For third party dependencies, update major versions only if `docusaurus` updates theirs to ensure API compatibility (see [Semver])
+1. `npm install`
+1. Done
+
+[Docusaurus Updating]: https://docusaurus.io/docs/installation#updating-your-docusaurus-version
 [Gitlab CI]: ./.gitlab-ci.yml
 [Docusaurus 2]: https://v2.docusaurus.io/
+[@docusaurus/core]: https://www.npmjs.com/package/@docusaurus/core?activeTab=versions
+[Semver]: https://semver.org/#summary
