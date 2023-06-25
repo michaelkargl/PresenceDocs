@@ -12,9 +12,9 @@
     "build-pdf": "npx docusaurus-pdf http://localhost:3000/docs docs.pdf"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.66",
-    "@docusaurus/preset-classic": "2.0.0-alpha.66",
-    "@easyops-cn/docusaurus-search-local": "^0.13.0",
+    "@docusaurus/core": "^2.4.1",
+    "@docusaurus/preset-classic": "^2.4.1",
+    "@easyops-cn/docusaurus-search-local": "^0.35.0",
     "@mdx-js/react": "^1.5.8",
     "clsx": "^1.1.1",
     "react": "^16.8.4",
