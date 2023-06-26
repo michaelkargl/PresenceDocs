@@ -61,8 +61,22 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-The page is deployed using [Gitlab CI].\
-No manual intervention is necessary.
+The page is deployed using [Gitlab CI] so no manual intervention is necessary for the actual deployment process. To enable docusaurus to find static resources like styling or images, `url` and `baseUrl` have to be set to point at addresses and paths of the to-be-deployed system.
+
+**Example: The page is hosted in gitlab pages at https://ohsnaparts.gitlab.io/osasoftworks/zube/presence-docs/docs/presence-ui/**
+
+```json
+{
+    //...
+    // base url of the web server
+    "url": "https://ohsnaparts.gitlab.io/",
+    // path pointing to the page hosted at `url`
+    "baseUrl": "/osasoftworks/zube/presence-docs/",
+    //...
+}
+```
+
+> `/docs/presence-ui/` are just 2 nested markdown pages
 
 
 ## PDF Export
