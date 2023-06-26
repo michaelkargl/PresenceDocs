@@ -3,7 +3,7 @@
 <div align="center">
     ![]("./static/img/logo.svg")
 
-    This website is using Docusaurus, a modern static website generator.
+    This projet hosts documentation using  [Docusaurus], a modern static website generator.
 </div>
 <br/>
 <hr/>
@@ -32,8 +32,13 @@ See also:
 
 * [Docusaurus Requirements]
 
-[Docusaurus Requirements]: https://docusaurus.io/docs/installation#requirements
 
+## Technologies used
+
+* **[Docusaurus]**: Platform for generating static websites from markdown pages
+* **[react]**: A library for user interfaces
+* **[mdx-js]**: Allows you to use JSX in your markdown content (`.mdx` pages)
+* **[docusaurus-local-search]**: indexes content at compile time for local searching
 
 ## Installation
 
@@ -50,6 +55,20 @@ npm start
 
 This command starts a local development server and open up a browser window. 
 Most changes are reflected live without having to restart the server.
+
+### Using MDX react components
+
+Suffixing a file with the `.mdx` turns it into a JSX enabled page. One effectively writes markdown through JSX which enables the use of react features.
+
+```mdx
+import {Chart} from './snowfall.js'
+export const year = 2018
+
+# Snowfall in {year}
+
+<Chart year={year} color="#fcb32c" />
+```
+
 
 ## Build
 
@@ -78,20 +97,6 @@ The page is deployed using [Gitlab CI] so no manual intervention is necessary fo
 
 > `/docs/presence-ui/` are just 2 nested markdown pages
 
-
-## PDF Export
-
-You can export the documentation as PDF by running the instance
-```console
-npm start
-```
-and issue
-```console
-npm run build-pdf
-```
-within a separate window.
-
-
 ## Updating the application
 
 See the [Docusaurus Docs][Docusaurus Updating] on how to update the application. This is done in mainly a handful of steps:
@@ -104,6 +109,11 @@ See the [Docusaurus Docs][Docusaurus Updating] on how to update the application.
 
 [Docusaurus Updating]: https://docusaurus.io/docs/installation#updating-your-docusaurus-version
 [Gitlab CI]: ./.gitlab-ci.yml
-[Docusaurus 2]: https://v2.docusaurus.io/
+[Docusaurus]: https://v2.docusaurus.io/
 [@docusaurus/core]: https://www.npmjs.com/package/@docusaurus/core?activeTab=versions
 [Semver]: https://semver.org/#summary
+[React]: https://react.dev/
+[mdxjs]: https://mdxjs.com/
+[docusaurus-local-search]: https://docusaurus.io/docs/search#using-local-search
+[Docusaurus Requirements]: https://docusaurus.io/docs/installation#requirements
+[docusaurus-markdown-react-features]: https://docusaurus.io/docs/markdown-features/react
