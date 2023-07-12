@@ -1,10 +1,19 @@
+/**
+ * @summary Exports an side bar definition
+ * @returns An Export reference containing a single sidebar instance
+ * @type Export = { [sideBarId: string]: SideBar }
+ * @type SideBar = { [pageGroupId: string]: PageGroup }
+ * @type PageGroup = { [pageId: string]: PageId[] }
+ * @type PageId = string
+ */
 module.exports = {
   presenceBotSidebar: {
-    PresenceBot: [ 
+    PresenceBot: [
       'presence-bot',
       'presence-ui',
       'presence-cube',
-      'presence-twin'
-    ],
+      'presence-twin',
+      'presence-docs'
+    ]
   }
 };
