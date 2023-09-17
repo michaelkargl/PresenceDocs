@@ -8,12 +8,13 @@
  */
 module.exports = {
   presenceBotSidebar: {
-    PresenceBot: [
+    'Presence System': [ 
       'presence-bot',
       'presence-ui',
       'presence-cube',
       'presence-twin',
-      'presence-docs'
-    ]
+      'presence-docs',
+      'presence-glossary'
+    ],
   }
 };
