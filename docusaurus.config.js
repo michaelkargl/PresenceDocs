@@ -118,5 +118,11 @@ module.exports = {
         searchResultContextMaxLength: 128
       }
     ]
-  ]
+  ],
+  markdown: {
+    mermaid: true,
+  },
+  themes: [
+    '@docusaurus/theme-mermaid'
+  ],
 };
