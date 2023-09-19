@@ -23,12 +23,15 @@ before_script:
   - 'echo "NPM: $(npm --version)"'
   - 'echo'
 
-# list:
-#   stage: build
-#   script:
-#     # Listing all environment variables is a security risk! Use with caution!
-#     # https://docs.gitlab.com/ee/ci/variables/index.html#list-all-environment-variables
-#     - export
+build:
+  stage: build
+  allow_failure: false
+  interruptible: true
+  script:
+    - npm install
+    - npm run build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 pages:
   stage: deploy
