@@ -1,4 +1,7 @@
-export default {
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+
+export default <Config>{
   title: 'Presence Docs',
   tagline: 'Presence System Documentation',
   // these paths need to reflect your production URLs
@@ -95,7 +98,7 @@ export default {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      },
+      } satisfies Preset.Options,
     ],
   ],
   plugins: [],
