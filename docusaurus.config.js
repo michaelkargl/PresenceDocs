@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   title: 'Presence Docs',
   tagline: 'Presence System Documentation',
   // these paths need to reflect your production URLs

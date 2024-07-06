@@ -140,6 +140,7 @@ import { Canvas } from './canvas.jsx'
     );
 }
 
+// TODO: check out v2 component injections: https://mdxjs.com/guides/injecting-components/
 export default props => (
     <MDXProvider components={{CanvasBanner}}>
         <CanvasBanner {...props}>{props.children}</CanvasBanner>
