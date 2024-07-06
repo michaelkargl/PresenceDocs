@@ -98,27 +98,7 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    [ require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        // @easyops-cn/docusaurus-search-local options
-        // https://github.com/easyops-cn/docusaurus-search-local#plugin-options
-        
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        //
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-        // When applying `zh` in language, please install `nodejieba` in your project.
-        // default: false
-        highlightSearchTermsOnTargetPage: true,
-        // deffault: 50
-        searchResultContextMaxLength: 128
-      }
-    ]
-  ],
+  plugins: [],
   markdown: {
     mermaid: true,
   },
