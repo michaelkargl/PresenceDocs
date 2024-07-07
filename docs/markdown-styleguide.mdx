@@ -258,12 +258,27 @@ import TeX from '@matejmazur/react-katex'
 
 import TeX from '@matejmazur/react-katex'
 
-export const Equation = ({x, upperLimit, lowerLimit, dx}) => {
-    const teX = `I = \\int_${lowerLimit}^\\${upperLimit} ${x}^2 ${dx}`;
-    return <TeX math={teX}></TeX>
-}
+<TeX math={`I = \\int_0^{2\\pi} \\sin(${Math.random() * 100})\\,${Math.random() * 100}`}></TeX>
 
-<Equation upperLimit="Lleftarrow"
-          lowerLimit="7"
-          x={123 + 3}
-          dx="12" />
+## Evaluatable Equations
+
+import {Equation} from "/src/components/equation";
+
+<Equation
+    katexEquation={'\\sqrt{\\frac{{10*a^2 + 20*b^2}}{{c}} + \\frac{{2(a \\cdot b)}}{{2c}} - \\frac{{c}}{{a + b}}}'}
+    fractionDigits={3}
+    variables={{
+        a: Math.random() * 100,
+        b: Math.random() * 100,
+        c: Math.random() * 100
+    }}
+/>
+
+<Equation
+    katexEquation={'\\int_0^{2\\pi} \\sin{c*d}'}
+    fractionDigits={3}
+    variables={{
+        d: Math.random() * 1000,
+        c: Math.random() * 1000
+    }}
+/>
