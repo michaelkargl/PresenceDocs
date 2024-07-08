@@ -260,11 +260,27 @@ import TeX from '@matejmazur/react-katex'
 
 <TeX math={`I = \\int_0^{2\\pi} \\sin(${Math.random() * 100})\\,${Math.random() * 100}`}></TeX>
 
-## Evaluatable Equations
+## Evaluatable Calculations
 
-import {Equation} from "/src/components/equation";
+import {Calculation} from "/src/components/calculation";
 
-<Equation
+Using the custom `Calculation` react component, we can evaluate [complex katex expressions].
+
+```js
+import {Calculation} from "/src/components/calculation";
+<Calculation
+    katexEquation={'\\sqrt{\\frac{{10*a^2 + 20*b^2}}{{c}} + \\frac{{2(a \\cdot b)}}{{2c}} - \\frac{{c}}{{a + b}}}'}
+    fractionDigits={3}
+    variables={{
+        a: Math.random() * 100,
+        b: Math.random() * 100,
+        c: Math.random() * 100
+    }}/>
+```
+
+[complex katex expressions]  https://cortexjs.io/mathlive/reference/commands/
+
+<Calculation
     katexEquation={'\\sqrt{\\frac{{10*a^2 + 20*b^2}}{{c}} + \\frac{{2(a \\cdot b)}}{{2c}} - \\frac{{c}}{{a + b}}}'}
     fractionDigits={3}
     variables={{
@@ -274,7 +290,7 @@ import {Equation} from "/src/components/equation";
     }}
 />
 
-<Equation
+<Calculation
     katexEquation={'\\int_0^{2\\pi} \\sin{c*d}'}
     fractionDigits={3}
     variables={{
@@ -282,3 +298,33 @@ import {Equation} from "/src/components/equation";
         c: Math.random() * 1000
     }}
 />
+
+# Equations
+
+import {Equation} from "/src/components/equation";
+
+Using the custom `Equations` component, we can evaluate
+equations with unknowns.
+
+```js
+import {Equation} from "/src/components/calculation";
+<Equation katexEquation={'x^2 + ax - b = 0'}
+          solveFor={'x'}
+          fractionDigits={3}
+          variables={{
+              a: 200,
+              b: 0.000015
+          }}/>
+```
+
+## Quadratic
+
+<!-- https://github.com/cortex-js/compute-engine/blob/main/test/compute-engine/solve.test.ts -->
+<Equation katexEquation={'x^2 + ax - b = 0'}
+          solveFor={'x'}
+          fractionDigits={3}
+          variables={{
+              a: 200,
+              b: 0.000015
+          }}/>
+
