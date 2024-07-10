@@ -1,15 +1,20 @@
 import React, {useRef, useEffect} from 'react'
 
-type CanvasReadyFunc = (context: CanvasRenderingContext2D, width: number, height: number) => void;
+type CanvasReadyFunc = (
+    context: CanvasRenderingContext2D,
+    width: number,
+    height: number
+) => void;
 
 interface CanvasProps {
     width?: string | number;
     height?: string | number;
     onCanvasReadyFn?: CanvasReadyFunc;
+    children?: React.ReactNode;
 }
 
 export const Canvas: React.FC<CanvasProps> = (props) => {
-    const canvasRef = useRef(null);
+    const canvasRef: React.RefObject<HTMLCanvasElement> = useRef(null);
 
     /**
      * Resizes an HTML element by modifying its style properties
@@ -20,7 +25,11 @@ export const Canvas: React.FC<CanvasProps> = (props) => {
      * @example resizeElement(document, 100, 200)
      * @example resizeElement(document, "100px", "50%")
      */
-    const resizeElement = (element: HTMLElement, width: number | string, height: number | string) => {
+    const resizeElement = (
+        element: HTMLElement,
+        width: number | string,
+        height: number | string
+    ) => {
         console.group("Resizing element %o to %s x %s", element, width, height);
         element.style.width = width.toString();
         element.style.height = height.toString();
@@ -34,7 +43,7 @@ export const Canvas: React.FC<CanvasProps> = (props) => {
 
     useEffect(() => {
         console.debug("Component mounted...");
-        const canvas = canvasRef.current;
+        const canvas: HTMLCanvasElement = canvasRef.current;
 
         // now that the parents are rendered / its sizes have stabilized, we can size the canvas
         const canvasSize = resizeElement(canvas, props.width, props.height);
@@ -44,5 +53,12 @@ export const Canvas: React.FC<CanvasProps> = (props) => {
             canvasSize.height);
     }, [props.onCanvasReadyFn]);
 
-    return <canvas ref={canvasRef} width={props.width} height={props.height}></canvas>;
+    return (<>
+        <canvas ref={canvasRef}
+                style={{
+                    width: props.width,
+                    height: props.height
+                }}></canvas>
+    </>);
+
 };

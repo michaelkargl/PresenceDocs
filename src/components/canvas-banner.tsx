@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {MDXProvider} from '@mdx-js/react'
 import {Canvas} from './canvas'
 import {MDXComponents} from "@mdx-js/react/lib";
@@ -6,11 +6,9 @@ import {MDXComponents} from "@mdx-js/react/lib";
 
 interface CanvasBannerProps {
     fontColor?: string;
-    fontMargin?: number;
-    marginTop?: number;
-    marginBottom?: number;
-    canvasWidth?: string | number;
-    canvasHeight?: string | number;
+    marginTop?: string | number,
+    marginBottom?: string | number,
+    padding?: string | number;
     canvasBlurRadius?: number;
     canvasBrightnessPercent?: number;
     canvasSaturation?: number;
@@ -26,23 +24,19 @@ interface CanvasBannerProps {
 const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
     const [
         fontColor,
-        fontMargin,
+        padding,
         marginTop,
         marginBottom,
-        canvasWidth,
-        canvasHeight,
         canvasBlurRadius,
         canvasBrightnessPercent,
         canvasSaturation,
         squareCount
     ] = [
         props.fontColor ?? "white",
-        props.fontMargin ?? 35,
-        props.marginTop ?? 100,
-        props.marginBottom ?? 50,
-        props.canvasWidth ?? "100%",
-        props.canvasHeight ?? "100px",
-        props.canvasBlurRadius ?? 7,
+        props.padding ?? "4rem",
+        props.marginTop ?? '4rem',
+        props.marginBottom ?? '2.5rem',
+        props.canvasBlurRadius ?? 3,
         props.canvasBrightnessPercent ?? 0.5,
         props.canvasSaturation ?? 0.3,
         props.squareCount ?? 50
@@ -150,38 +144,58 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
         drawRandomSquares(canvasContext, canvasWidth, canvasHeight, squareCount);
     }
 
+    const childRef: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+    const [childSize, setChildSize] = useState([0, 0]);
+
+    useEffect(() => {
+        console.log("useEffect: %o", childRef);
+        const childBoundingBox = childRef.current.getBoundingClientRect();
+        const updateChildSize = childSize[0] !== childBoundingBox.width || childSize[1] === childBoundingBox.height;
+        if (updateChildSize) {
+            setChildSize([
+                childBoundingBox.width,
+                childBoundingBox.height
+            ]);
+        }
+    }, [childRef]);
+
     return (
-        <div style={{height: "100%", position: "relative"}}>
+        <div style={{height: "100%", position: "relative", marginTop, marginBottom}}>
             {/* overlay child elements ontop of the canvas */}
-            <div style={{
+            <div ref={childRef} style={{
                 position: "absolute",
+                boxSizing: 'border-box',
                 zIndex: 1,
                 color: fontColor,
-                margin: fontMargin
-            }}>{props.children}</div>
+                padding: props.padding
+            }}>
+                {props.children}
+            </div>
+
 
             {/* distort the canvas image to make text easier to read */}
             <div style={{
-                marginTop, marginBottom, filter: `
+                filter: `
                 blur(${canvasBlurRadius}px)
                 brightness(${canvasBrightnessPercent})
                 saturate(${canvasSaturation})`
             }}>
-                <Canvas width={canvasWidth}
-                        height={canvasHeight}
+                <Canvas width='100%'
+                        height={childSize[1]}
                         onCanvasReadyFn={draw}></Canvas>
             </div>
         </div>
     );
 }
 
-const components: MDXComponents = {
-    CanvasBanner
-};
 
 // TODO: check out v2 component injections: https://mdxjs.com/guides/injecting-components/
-export default props => (
-    <MDXProvider components={components}>
+const decoratedComponent: React.FC<CanvasBannerProps> = (props) => (
+    <MDXProvider components={{
+        CanvasBanner
+    } satisfies MDXComponents}>
         <CanvasBanner {...props}>{props.children}</CanvasBanner>
     </MDXProvider>
-)
+);
+
+export default decoratedComponent;

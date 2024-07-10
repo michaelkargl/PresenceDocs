@@ -12,8 +12,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
     args: {
+        padding: "1.5rem",
         children: (
-            <span>Your colored text here</span>
+            <span style={{ fontSize: '2rem'}}>Your colored text here</span>
         )
     }
 }
