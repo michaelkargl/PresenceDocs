@@ -11,12 +11,9 @@
 
 ## Reading the docs
 
-There are 3 ways of consuming these docs
-
-1. Run the full docusaurus instance and browse them using the web-interface
-1. Export the docs to PDF
-1. [Browse the Markdown files manually](./docs)
-
+```pwsh
+npm run start
+```
 
 ## Requirements
 
@@ -39,6 +36,7 @@ See also:
 * **[react]**: A library for user interfaces
 * **[mdx-js]**: Allows you to use JSX in your markdown content (`.mdx` pages)
 * **[docusaurus-local-search]**: indexes content at compile time for local searching
+* **[storybook]**: platform for documenting and testing web components
 
 ## Installation
 
@@ -49,8 +47,12 @@ npm install
 
 ## Local Development
 
-```console
-npm start
+```pwsh
+# running the docusaurus instance
+npm run start
+
+# running storybook
+npm run storbook
 ```
 
 This command starts a local development server and open up a browser window. 
@@ -117,3 +119,4 @@ See the [Docusaurus Docs][Docusaurus Updating] on how to update the application.
 [docusaurus-local-search]: https://docusaurus.io/docs/search#using-local-search
 [Docusaurus Requirements]: https://docusaurus.io/docs/installation#requirements
 [docusaurus-markdown-react-features]: https://docusaurus.io/docs/markdown-features/react
+[storybook]: https://storybook.js.org/
