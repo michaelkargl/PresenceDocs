@@ -37,6 +37,8 @@ See also:
 * **[mdx-js]**: Allows you to use JSX in your markdown content (`.mdx` pages)
 * **[docusaurus-local-search]**: indexes content at compile time for local searching
 * **[storybook]**: platform for documenting and testing web components
+* **[docusaurus-plugins]**: custom docusaurus plugins to modify the build process
+* **[webpack]**: for building and bundling
 
 ## Installation
 
@@ -120,3 +122,5 @@ See the [Docusaurus Docs][Docusaurus Updating] on how to update the application.
 [Docusaurus Requirements]: https://docusaurus.io/docs/installation#requirements
 [docusaurus-markdown-react-features]: https://docusaurus.io/docs/markdown-features/react
 [storybook]: https://storybook.js.org/
+[docusaurus-plugins]: https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#configureWebpack
+[webpack]: https://webpack.js.org/

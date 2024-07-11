@@ -1,6 +1,13 @@
 {
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      // these aliases only tell the linter about file paths
+      // to make them work with storybook you need to add them to the .storybook/main.ts
+      // to make them work with docusaurus you need to add them to the plugins/path-alias-plugin
+      "@app/*": ["./src/*"],
+      "@components/*": ["./src/components/*"]
+    }
   }
 }

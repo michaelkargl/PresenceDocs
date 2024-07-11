@@ -1,9 +1,9 @@
 import React, {useRef, useEffect} from 'react'
+import {Size2d} from "../units/size2d";
 
 type CanvasReadyFunc = (
     context: CanvasRenderingContext2D,
-    width: number,
-    height: number
+    size: Size2d
 ) => void;
 
 interface CanvasProps {
@@ -46,11 +46,10 @@ export const Canvas: React.FC<CanvasProps> = (props) => {
         const canvas: HTMLCanvasElement = canvasRef.current;
 
         // now that the parents are rendered / its sizes have stabilized, we can size the canvas
-        const canvasSize = resizeElement(canvas, props.width, props.height);
+        const canvasSize: DOMRect = resizeElement(canvas, props.width, props.height);
         props.onCanvasReadyFn(
             canvas.getContext('2d'),
-            canvasSize.width,
-            canvasSize.height);
+            Size2d.FromNumbers(canvasSize.width, canvasSize.height))
     }, [props.onCanvasReadyFn]);
 
     return (<>

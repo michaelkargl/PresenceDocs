@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from "@storybook/react";
-import CanvasBanner from "../../src/components/canvas-banner";
+import CanvasBanner from "@components/canvas-banner";
 
 const meta = {
     title: 'CanvasBanner',

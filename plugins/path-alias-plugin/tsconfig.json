@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    // needed to be able to import json files in typescript modules
+    "resolveJsonModule": true,
+    // necessary for the default import (import MyJson from './my.json')
+    // if set to `false` one would need to do (import * as MyJson from './my.json')
+    "esModuleInterop": true
+  }
+}

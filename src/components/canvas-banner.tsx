@@ -1,8 +1,10 @@
+// @ts-ignore
+import {MDXComponents} from "@mdx-js/react/lib";
 import React, {useEffect, useRef, useState} from 'react'
 import {MDXProvider} from '@mdx-js/react'
-import {Canvas} from './canvas'
-import {MDXComponents} from "@mdx-js/react/lib";
-
+import {Canvas} from '@components/canvas'
+import {Random} from "@app/utils";
+import {Color, Length, Size2d} from "@app/units";
 
 interface CanvasBannerProps {
     fontColor?: string;
@@ -42,13 +44,6 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
         props.squareCount ?? 50
     ];
 
-    const randomNumber = (min: number, max: number) => min + (Math.random() * 10 ** 16 % max);
-
-    /**
-     * @returns {number} a random 8-bit RGB color value
-     */
-    const randomColor = () => randomNumber(0, 255);
-
     /**
      * Draws a rectangle to the given canvas
      * @param {*} canvas the 2d canvas context to draw onto
@@ -56,22 +51,16 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
      * @param {number} positionY the top-left corner Y position
      * @param {number} width the width in pixels
      * @param {number} height the height in pixels
-     * @param {number} red an 8-bit RGB value
-     * @param {number} green an 8-bit RGB value
-     * @param {number} blue an 8-bit RGB value
      */
     const drawRectangle = (
         canvas: CanvasRenderingContext2D,
         positionX: number,
         positionY: number,
-        width: number,
-        height: number,
-        red: number,
-        green: number,
-        blue: number
+        size: Size2d,
+        color: Color
     ) => {
-        canvas.fillStyle = `rgb(${red}, ${green}, ${blue})`;
-        canvas.fillRect(positionX, positionY, width, height);
+        canvas.fillStyle = color.ToRgbCss();
+        canvas.fillRect(positionX, positionY, size.width.pixel, size.height.pixel);
     }
 
     /**
@@ -82,29 +71,24 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
      */
     const drawRandomSquare = (
         canvasContext: CanvasRenderingContext2D,
-        canvasWidth: number,
-        canvasHeight: number
+        canvasSize: Size2d
     ) => {
-        const size = randomNumber(0, canvasWidth);
         const [
             positionX,
             positionY,
-            red,
-            green,
-            blue
+            color
         ] = [
-            randomNumber(0, canvasWidth),
-            randomNumber(0, canvasHeight),
-            randomColor(),
-            randomColor(),
-            randomColor()
+            Random.Number(0, canvasSize.width.pixel),
+            Random.Number(0, canvasSize.height.pixel),
+            Color.Random()
         ];
 
+        const rectangleSize = Size2d.Random(Length.Zero, canvasSize.width);
         drawRectangle(
             canvasContext,
             positionX, positionY,
-            size, size,
-            red, green, blue
+            rectangleSize,
+            color
         );
     }
 
@@ -117,15 +101,13 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
      */
     const drawRandomSquares = (
         canvasContext: CanvasRenderingContext2D,
-        canvasWidth: number,
-        canvasHeight: number,
+        canvasSize: Size2d,
         count: number
     ) => {
         for (let i = 0; i < count; i++) {
             drawRandomSquare(
                 canvasContext,
-                canvasWidth,
-                canvasHeight);
+                canvasSize);
         }
     }
 
@@ -137,11 +119,10 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
      */
     const draw = (
         canvasContext: CanvasRenderingContext2D,
-        canvasWidth: number,
-        canvasHeight: number
+        canvasSize: Size2d
     ) => {
-        drawRectangle(canvasContext, 0, 0, canvasWidth, canvasHeight, 0, 0, 0);
-        drawRandomSquares(canvasContext, canvasWidth, canvasHeight, squareCount);
+        drawRectangle(canvasContext, 0, 0, canvasSize, Color.White);
+        drawRandomSquares(canvasContext, canvasSize, squareCount);
     }
 
     const childRef: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);

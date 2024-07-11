@@ -1,0 +1,8 @@
+{
+  "name": "path-alias-plugin",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json"
+  }
+}

@@ -118,7 +118,9 @@ export default <Config>{
             } satisfies Preset.Options,
         ],
     ],
-    plugins: [],
+    plugins: [
+        [ 'path-alias-plugin', { fancy: true } ]
+    ],
     markdown: {
         mermaid: true,
     },
