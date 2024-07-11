@@ -2,11 +2,15 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import path from "node:path";
+import {PathAliasPluginOptions} from "./plugins/path-alias-plugin/path-alias-plugin-options";
 
 type Stylesheet = {
     href: string;
     [key: string]: string | boolean | undefined;
 };
+
+const ROOT_DIR = __dirname;
 
 const katexStylesheet: Stylesheet = {
     href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
@@ -119,15 +123,22 @@ export default <Config>{
         ],
     ],
     plugins: [
-        [ 'path-alias-plugin', { fancy: true } ]
+        ['path-alias-plugin', <PathAliasPluginOptions>{
+            aliases: {
+                '@app': path.resolve(ROOT_DIR, 'src/'),
+                '@components': path.resolve(ROOT_DIR, 'src/components/')
+            }
+        }]
     ],
     markdown: {
         mermaid: true,
-    },
+    }
+    ,
     themes: [
         '@docusaurus/theme-mermaid'
     ],
-    stylesheets: <Stylesheet[]>[
-        katexStylesheet,
-    ],
+    stylesheets:
+        <Stylesheet[]>[
+            katexStylesheet,
+        ],
 };

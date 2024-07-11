@@ -43,8 +43,15 @@ See also:
 ## Installation
 
 After checkin out the repository, you'll need to install all the dependencies:
-```console
+```pwsh
 npm install
+```
+
+Some dependencies like plugins are not yet transpiled. Lets just
+do a full build to prepare everything
+
+```pwsh
+npm run build:all
 ```
 
 ## Local Development

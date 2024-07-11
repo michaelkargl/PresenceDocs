@@ -40,6 +40,7 @@ pages:
   script:
     - cd $DOCUSAURUS_PAGE_DIR
     - 'echo "---------- PWD: $PWD"'
+    - npm run build:plugins
     - npm install
     - npm run build
     - cd -

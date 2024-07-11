@@ -1,20 +1,8 @@
-import * as path from "node:path";
 import {Configuration} from 'webpack';
-import {LoadContext, PluginModule} from "@docusaurus/types";
-import  PackageJson from './package.json';
-
-type FolderPath = string;
-type Aliases = { [aliasName: string]: FolderPath };
-
-
-function provideAliases(projectRootPath: FolderPath): Aliases {
-    const srcFolder = path.resolve(projectRootPath, 'src/');
-
-    return {
-        '@app': srcFolder,
-        '@components': path.resolve(srcFolder, 'components/')
-    };
-}
+import {LoadContext, Plugin, PluginModule} from "@docusaurus/types";
+import PackageJson from './package.json';
+import {Aliases} from "./aliases";
+import {PathAliasPluginOptions} from "./path-alias-plugin-options";
 
 /**
  * Appends the given aliases to the specified webpack config by mutation
@@ -26,7 +14,6 @@ function configureAliases(webpackConfig: Configuration, aliases: Aliases): Confi
     return {...webpackConfig};
 }
 
-
 /**
  * Returns a docusaurus plugin module that configures webpack to do processing of
  * path aliases. This is done by modifying the webpack configuration through the
@@ -36,18 +23,15 @@ function configureAliases(webpackConfig: Configuration, aliases: Aliases): Confi
  * @see https://docusaurus.io/docs/api/plugin-methods/lifecycle-apis#configureWebpack
  * @see https://webpack.js.org/configuration/resolve/#resolve
  */
-export default <PluginModule>function (context: LoadContext, options) {
-    console.warn(JSON.stringify(options));
-    return {
+export default <PluginModule>function (context: LoadContext, options: PathAliasPluginOptions) {
+    console.log("Registering Plugin %s with version %s", PackageJson.name, PackageJson.version);
+    console.log("Registering Plugin %s with options %s", PackageJson.name, JSON.stringify(options));
+
+    return <Plugin<unknown>>{
         name: PackageJson.name,
         configureWebpack(config, isServer, utils) {
-            const pluginFolder = path.resolve(__dirname);
-            const projectRoot = path.resolve(pluginFolder, '../../');
-
-            const aliases = provideAliases(projectRoot);
-
             const configurationDelta: Configuration = {resolve: {alias: {}}};
-            return configureAliases(configurationDelta, aliases)
+            return configureAliases(configurationDelta, options.aliases)
         }
     }
 }

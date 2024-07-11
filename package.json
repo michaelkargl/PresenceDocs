@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve",
+    "start": "npm run docusaurus -- start",
+    "build": "npm run build:docusaurus",
+    "swizzle": "npm run docusaurus -- swizzle",
+    "deploy": "npm run docusaurus -- deploy",
+    "serve": "npm run docusaurus -- serve",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build:all": "npm run build:plugins && npm run build && npm run build:storybook",
+    "build:docusaurus": "npm run docusaurus -- build",
+    "build:storybook": "storybook build",
+    "build:plugins": "cd plugins/path-alias-plugin && npm run build && cd -"
   },
   "dependencies": {
     "@cortex-js/compute-engine": "^0.25.1",
