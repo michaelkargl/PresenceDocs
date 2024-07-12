@@ -1,0 +1,15 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@AAA/*": [
+        "./AAA/*"
+      ],
+      "@BBB/*": [
+        "./BBB/src/*",
+        "./BBB/components/*"
+      ]
+    }
+  }
+}

@@ -3,7 +3,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import path from "node:path";
-import {PathAliasPluginOptions} from "./plugins/path-alias-plugin/path-alias-plugin-options";
+import {PathAliasPluginOptions} from "path-alias-plugin/src/models/path-alias-plugin-options";
 
 type Stylesheet = {
     href: string;
@@ -124,10 +124,7 @@ export default <Config>{
     ],
     plugins: [
         ['path-alias-plugin', <PathAliasPluginOptions>{
-            aliases: {
-                '@app': path.resolve(ROOT_DIR, 'src/'),
-                '@components': path.resolve(ROOT_DIR, 'src/components/')
-            }
+            tsconfigPath: path.resolve(ROOT_DIR, 'tsconfig.json')
         }]
     ],
     markdown: {

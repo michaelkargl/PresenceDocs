@@ -1,9 +1,26 @@
 {
+  "exclude": [
+    // no need to transpile these tests => jest handles it for themselves
+    "**/*.spec.ts",
+    "jest.config.ts"
+  ],
+  // https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html
   "compilerOptions": {
+    "outDir": "./dist",
     // needed to be able to import json files in typescript modules
     "resolveJsonModule": true,
     // necessary for the default import (import MyJson from './my.json')
     // if set to `false` one would need to do (import * as MyJson from './my.json')
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    /// Options:
+    ///   preserve: https://www.typescriptlang.org/tsconfig/#preserve
+    /// See Also:
+    /// @see https://www.typescriptlang.org/tsconfig/#module
+    /// @see https://www.typescriptlang.org/docs/handbook/modules/theory.html#the-module-output-format
+    "module": "NodeNext",
+    "target": "ES2023",
+    "moduleResolution": "NodeNext",
+    "strict": true
   }
 }

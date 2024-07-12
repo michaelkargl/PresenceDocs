@@ -13,7 +13,7 @@
     "build:all": "npm run build:plugins && npm run build && npm run build:storybook",
     "build:docusaurus": "npm run docusaurus -- build",
     "build:storybook": "storybook build",
-    "build:plugins": "cd plugins/path-alias-plugin && npm run build && cd -"
+    "build:plugins": "cd plugins/path-alias-plugin && npm run build && cd - && npm install"
   },
   "dependencies": {
     "@cortex-js/compute-engine": "^0.25.1",
@@ -43,7 +43,7 @@
     "@storybook/react-webpack5": "^8.2.1",
     "@storybook/test": "^8.2.1",
     "@types/react": "^18.2.29",
-    "path-alias-plugin": "file:plugins/path-alias-plugin",
+    "path-alias-plugin": "file:plugins/path-alias-plugin/dist",
     "storybook": "^8.2.1",
     "typescript": "^5.0.0"
   },

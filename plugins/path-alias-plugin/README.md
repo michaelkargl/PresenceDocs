@@ -5,8 +5,8 @@ Adds path alias support to docusaurus
 ## Description
 
 > In short: We created a `plugins` folder that contains a private
-npm package (registered in `package.json`) that defines
-a docusaurus plugin for adding type alias support through webpack.
+> npm package (registered in `package.json`) that defines
+> a docusaurus plugin for adding type alias support through webpack.
 
 
 Docusaurus, by default only supports its own path aliases that
@@ -20,9 +20,22 @@ configuration via docusaurus plugins to do the same.
 
 ## How to use
 
+### Dependencies
+
+* nvm ([bash][nvm-linux] / [pwsh][nvm-pwsh])
+
+```pwsh
+nvm install
+nvm use
+```
+
+[nvm-linux]: https://github.com/nvm-sh/nvm
+
+[nvm-pwsh]: https://github.com/aaronpowell/ps-nvm
+
 ### 1. Build
 
-The plugin is written in typescript, so we need  to transpile the
+The plugin is written in typescript, so we need to transpile the
 module before it can be referenced:
 
 ```
@@ -48,6 +61,7 @@ plugins: [
 ```
 
 ### 4. Run
+
 ```pwsh
 npm install
 npm run start
