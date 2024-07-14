@@ -208,7 +208,7 @@ This is a warning
 ## MDX / Markdown + JSX
 
 import Highlight from '@components/highlight.tsx'
-import CanvasBanner from '@components/canvas-banner.tsx'
+
 
 <!-- 
 Imports and mdx needs to be separated by at least 1 empty line.
@@ -222,13 +222,16 @@ export const HighlightRed = ({children}) => (
 
 You can write <HighlightRed>**_JSX_**</HighlightRed> and use React components within your _Markdown_ thanks to [MDX](https://mdxjs.com/).
 
-<CanvasBanner marginTop="0" canvasHeight="160px">
+import CanvasBanner from "../src/components/canvas-banner";
+
+<CanvasBanner>
 
     1. Apple
     1. Coco Nut
     1. Uni Corn
 
 </CanvasBanner>
+
 
 
 ## Mathematics

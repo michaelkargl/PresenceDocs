@@ -4,13 +4,13 @@ title: Presence UI
 sidebar_label: Presence UI
 slug: /presence-ui
 ---
-import CanvasBanner from '@components/canvas-banner.tsx'
 
 
-<CanvasBanner padding={'1.5rem'}>
+
+
 
 ## Mission Statement
-</CanvasBanner>
+
 
 A _Digital Twin_ service provides APIs for accessing and interacting with _presence devices_. A _presence device_ can have multiple forms:
 
@@ -23,10 +23,10 @@ The Presence UI provides a frontend to visualize and interact with these device 
 [presence twin]: ./presence-twin/
 [presence cube]: ./presence-cube/
 
-<CanvasBanner padding={'1.5rem'}>
+
 
 ## Functional Context
-</CanvasBanner>
+
 
 | Actor             | Description                                                     |
 | ----------------- | --------------------------------------------------------------- |
@@ -48,10 +48,10 @@ digital_twin -do-> port_digital_twin: 1..*
 @enduml
 ```
 
-<CanvasBanner padding={'1.5rem'}>
+
 
 ## Boundary conditions
-</CanvasBanner>
+
 
 | Condition                 | Description                                                                                                                                                                                                          |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,10 +63,10 @@ digital_twin -do-> port_digital_twin: 1..*
 | Libraries and Frameworks  | Since the deadline is quite intense, it is best to rely on tools the team is already familiar with including: `Angular`, `Mobx`, `RXJS`, `Nx`, `npm`, `typescript`, `scss`, `docker`, `docker-compose`, `powershell` |
 | Design Patterns           | Domain Driven Design, SOLID, Quality-Driven Software Architecture, Modulith                                                                                                                                          |
 
-<CanvasBanner padding={'1.5rem'}>
+
 
 ## Top Quality Goals
-</CanvasBanner>
+
 
 - **Accessibility**\
   The app is easily accessable and useable on day-to-day devices / platforms.
@@ -89,10 +89,10 @@ digital_twin -do-> port_digital_twin: 1..*
   - As a user, given state changes, I will be able to determine their accuracy. For instance, changes in criticality values could be tagged with it's latest update timestamp to prevent making decisions on out-of-date data.
 
 
-<CanvasBanner padding={'1.5rem'}>
+
 
 ## Informal Diagram
-</CanvasBanner>
+
 
 ```diff
 - replace with a hand drawn graphic
@@ -118,10 +118,10 @@ node "<<system>>\nPresence Twin UI" {
 }
 ```
 
-<CanvasBanner padding={'1.5rem'}>
+
 
 ## Accepted Compromises
-</CanvasBanner> 
+
 
 - **release speed over accessability**\
   Due to the intense time budget, it is better to be less **accessibile** at first.
