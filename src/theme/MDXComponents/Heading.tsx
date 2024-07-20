@@ -19,8 +19,14 @@ export default function HeadingWrapper(props: Props): JSX.Element {
     // add a padding the size of the font (50% top, 50% bottom)
     const padding = headlineEmSizes.get(props.as);
     return (
-        <CanvasBanner padding={padding}>
-            <Heading {...props} />
+        <CanvasBanner>
+            { /* we are taking control of the spacings to properly center the content within the canvas box */}
+            <Heading {...props} style={{
+                boxSizing: 'border',
+                margin: 0,
+                padding: 0,
+                overflow: 'hidden'
+            }} />
         </CanvasBanner>
     );
 }

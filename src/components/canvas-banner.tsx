@@ -36,7 +36,7 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
     ] = [
         props.fontColor ?? "white",
         props.padding ?? "4rem",
-        props.marginTop ?? '4rem',
+        props.marginTop ?? '0rem',
         props.marginBottom ?? '2.5rem',
         props.canvasBlurRadius ?? 3,
         props.canvasBrightnessPercent ?? 0.5,
@@ -141,14 +141,23 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
     }, [childRef]);
 
     return (
-        <div style={{height: "100%", position: "relative", marginTop, marginBottom}}>
-            {/* overlay child elements ontop of the canvas */}
+        /* TODO: Move to SCSS */
+        <div style={{
+            height: "100%",
+            position: "relative",
+            display: "flex",
+            justifyContent: 'start',
+            alignItems: 'center',
+            flexGrow: 1
+        }}>
+            {/* TODO: Move to SCSS */}
             <div ref={childRef} style={{
                 position: "absolute",
                 boxSizing: 'border-box',
                 zIndex: 1,
                 color: fontColor,
-                padding: props.padding
+                padding: props.padding,
+                flexGrow: 1
             }}>
                 {props.children}
             </div>
@@ -159,18 +168,17 @@ const CanvasBanner: React.FC<CanvasBannerProps> = (props) => {
                 filter: `
                 blur(${canvasBlurRadius}px)
                 brightness(${canvasBrightnessPercent})
-                saturate(${canvasSaturation})`
+                saturate(${canvasSaturation})`,
+                width: '100%'
             }}>
                 <Canvas width='100%'
                         height={childSize[1]}
-                        onCanvasReadyFn={draw}></Canvas>
+                        onCanvasReadyFn={draw}/>
             </div>
         </div>
     );
 }
 
-
-// TODO: check out v2 component injections: https://mdxjs.com/guides/injecting-components/
 const decoratedComponent: React.FC<CanvasBannerProps> = (props) => (
     <MDXProvider components={{
         CanvasBanner
