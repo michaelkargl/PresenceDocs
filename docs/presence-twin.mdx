@@ -5,10 +5,34 @@ sidebar_label: Presence Twin
 slug: /presence-twin
 ---
 
-
-
-
-
-
 ## Mission Statement
 
+The digital twin is a service that represents the current state of a device. It contains two sections:
+
+1. **Reported**: The current state of the device as reported by the device itself.
+2. **Desired**: The desired state of the device as set by the user.
+
+
+
+// TODO: replace with real payload once the design is finalized
+
+```json
+    {
+        "deviceId": "23f1e0d-4b2c-4a5b-8c7d-9f3e0d4b2c8a",
+        "updatedAt": "2023-10-01T12:00:00Z",
+        "reported": {
+            "led-south": {
+                "r: 0.9,
+                "g": 0,
+                "b": 0,
+            }
+        },
+        "desired": {
+            "led-south": {
+                "r: 1,
+                "g": 0.5,
+                "b": 0.6,
+            }
+        }
+    }
+```

@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "davidanson.vscode-markdownlint",
+        "bierner.markdown-mermaid",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "gruntfuggly.todo-tree",
+        "unifiedjs.vscode-mdx"
+    ]
+}

@@ -96,7 +96,7 @@ export default <Config>{
                 },
             ],
             copyright: `Copyright © ${new Date().getFullYear()} OhSnapArts.`,
-        },
+        }
     },
     presets: [
         [

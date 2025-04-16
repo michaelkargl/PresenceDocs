@@ -18,16 +18,19 @@ const headlineEmSizes = new Map<string, number>([
 export default function HeadingWrapper(props: Props): JSX.Element {
     // add a padding the size of the font (50% top, 50% bottom)
     const padding = headlineEmSizes.get(props.as);
+    const cssPadding = `${2 * padding}em 0em ${ 1.5 * padding}em 0em`
     return (
-        <CanvasBanner>
-            { /* we are taking control of the spacings to properly center the content within the canvas box */}
-            <Heading {...props} style={{
-                boxSizing: 'border',
-                margin: 0,
-                padding: 0,
-                overflow: 'hidden'
-            }} />
-        </CanvasBanner>
+        <div style={{ padding: cssPadding, margin: 0 }}>
+            <CanvasBanner>
+                { /* we are taking control of the spacings to properly center the content within the canvas box */}
+                <Heading {...props} style={{
+                    boxSizing: 'border',
+                    margin: 0,
+                    padding: 20,
+                    overflow: 'hidden'
+                }} />
+            </CanvasBanner>
+        </div>
     );
 }
 
