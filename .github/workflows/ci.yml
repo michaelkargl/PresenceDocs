@@ -7,9 +7,15 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     container: mcr.microsoft.com/dotnet/sdk:9.0
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       # -------------------------------
       - name: Setup Node
         uses: actions/setup-node@v3.9.1
