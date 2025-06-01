@@ -4,9 +4,9 @@
     "version": "3.4.0",
     "private": true,
     "scripts": {
-        "yarn:install": "yarn --prefer-offline --emoji true install",
-        "jest": "npx jest",
-        "build": "yarn run yarn:install && npx tsc --project ./tsconfig.json",
+        "ynpx": "npx ynpx --preferOffline",
+        "jest": "npx ynpx jest",
+        "build": "yarn --prefer-offline --emoji true install && yarn ynpx tsc --project ./tsconfig.json",
         "build:watch": "yarn run build --watch",
         "test": "npm run jest"
     },
@@ -17,7 +17,8 @@
         "ts-node": "^10.9.2",
         "typescript": "^5.5.3",
         "webpack": "^5.93.0",
-        "webpack-cli": "^5.1.4"
+        "webpack-cli": "^5.1.4",
+        "ynpx": "^2.1.6"
     },
     "dependencies": {
         "jsonc-parser": "^3.3.1"

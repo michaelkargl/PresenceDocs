@@ -31,12 +31,7 @@ yarn run build
 
 ## Usage
 
-To use the plugin
-
-1. copy the dist folder into your project
-1. or add the project as git submodule.
-
-For this demo we chose the latter. In your [`package.json`][demo-package.json]:
+To use the plugin copy the dist folder into your project and link it in your [`package.json`][demo-package.json]:
 
 ```jsonc
 {
