@@ -11,6 +11,9 @@ jobs:
       contents: write
       pages: write
       id-token: write
+    environment:
+      name: production
+      url: ${{ steps.presence-docs-deployment.outputs.page_url }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
