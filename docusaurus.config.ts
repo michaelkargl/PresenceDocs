@@ -24,8 +24,8 @@ export default <Config>{
     title: 'Presence Docs',
     tagline: 'Presence System Documentation',
     // these paths need to reflect your production URLs
-    url: 'https://ohsnaparts.gitlab.io/',
-    baseUrl: '/osasoftworks/zube/presence-docs/',
+    url: 'https://michaelkargl.github.io',
+    baseUrl: '/PresenceDocs',
     onBrokenLinks: 'throw',
     favicon: 'img/favicon.ico',
     organizationName: 'ohsnaparts',  // Usually your GitHub org/user name.
