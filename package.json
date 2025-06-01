@@ -3,18 +3,18 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "yarn": "yarn --prefer-offline --emoji true",
+    "yarn:install": "yarn --emoji true",
     "docusaurus": "docusaurus",
-    "start": "yarn run yarn run docusaurus -- start",
-    "build": "yarn run yarn run build:docusaurus",
-    "swizzle": "yarn run yarn run docusaurus -- swizzle",
-    "deploy": "yarn run yarn run docusaurus -- deploy",
-    "serve": "yarn run yarn run docusaurus -- serve",
+    "start": "yarn run build:plugins && yarn run docusaurus start",
+    "build": "yarn run build:docusaurus",
+    "swizzle": "yarn run docusaurus swizzle",
+    "deploy": "yarn run docusaurus deploy",
+    "serve": "yarn run docusaurus serve",
     "storybook": "storybook dev -p 6006",
-    "build:all": "yarn run yarn run build:plugins && yarn run yarn run build && yarn run yarn run build:storybook",
-    "build:docusaurus": "yarn run yarn run docusaurus -- build",
+    "build:all": "yarn run build:plugins && yarn run build && yarn run build:storybook",
+    "build:docusaurus": "yarn run docusaurus build",
     "build:storybook": "storybook build",
-    "build:plugins": "cd plugins/path-alias-plugin && npm run build && cd - && npm install"
+    "build:plugins": "cd libs/path-alias-plugin && yarn run build && cd - && yarn run yarn:install"
   },
   "dependencies": {
     "@cortex-js/compute-engine": "^0.25.1",

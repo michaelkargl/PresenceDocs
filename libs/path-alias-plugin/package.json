@@ -4,10 +4,10 @@
   "version": "3.4.0",
   "private": true,
   "scripts": {
-    "yarn": "yarn --prefer-offline --emoji true",
+    "yarn:install": "yarn --emoji true install",
     "jest": "npx jest",
-    "build": "yarn run yarn install && npx tsc --project ./tsconfig.json",
-    "build:watch": "yarn run build -- --watch",
+    "build": "yarn run yarn:install && npx tsc --project ./tsconfig.json",
+    "build:watch": "yarn run build --watch",
     "test": "npm run jest"
   },
   "devDependencies": {

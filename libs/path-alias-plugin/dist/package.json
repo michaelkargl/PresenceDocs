@@ -1,0 +1,25 @@
+{
+    "name": "path-alias-plugin",
+    "description": "Enables path aliases in docusaurus installations. Note from the devs: keep this version aligned with the latest known supported docusaurus version.",
+    "version": "3.4.0",
+    "private": true,
+    "scripts": {
+        "yarn:install": "yarn --prefer-offline --emoji true install",
+        "jest": "npx jest",
+        "build": "yarn run yarn:install && npx tsc --project ./tsconfig.json",
+        "build:watch": "yarn run build --watch",
+        "test": "npm run jest"
+    },
+    "devDependencies": {
+        "@jest/globals": "^29.7.0",
+        "ts-jest": "^29.2.2",
+        "ts-loader": "^9.5.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.5.3",
+        "webpack": "^5.93.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "jsonc-parser": "^3.3.1"
+    }
+}

@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [gh-pages]
   workflow_dispatch:
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
         run: yarn install
       # -------------------------------
       - name: Build Docusaurus
-        run: yarn run build
+        run: yarn run build:all
       # -------------------------------
       - name: Upload GitHub Pages Folder
         uses: actions/upload-pages-artifact@v3
