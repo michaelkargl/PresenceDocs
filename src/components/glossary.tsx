@@ -29,8 +29,8 @@ interface GlossaryEntryProps {
 
 const GlossaryEntry: React.FC<GlossaryEntryProps> = props => {
     const {term, definition} = props;
-    return (<tr>
-        <td>{term}</td>
+    return (<tr id={term}>
+        <td><a href={`#${term}`}>{term}</a></td>
         <td>{definition}</td>
     </tr>);
 };
