@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+    branches: [ gh-pages ]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    container: mcr.microsoft.com/dotnet/sdk:9.0
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      # -------------------------------
+      - name: Setup Node
+        uses: actions/setup-node@v3.9.1
+        with:
+          node-version-file: .nvmrc
+      # -------------------------------
+      - name: Setup Yarn
+        run: npm install --global yarn
+      # -------------------------------
+      - name: Yarn Install
+        run: yarn install
+      # -------------------------------
+      - name: Build Docusaurus
+        run: yarn run build
+      # -------------------------------
+      - name: Upload GitHub Pages Folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+            path: './build'
+      # -------------------------------
+      - name: Deploy to GitHub Pages
+        id: presence-docs-deployment
+        uses: actions/deploy-pages@v4
