@@ -8,17 +8,13 @@ import CanvasBanner from "@components/canvas-banner.tsx";
 
 ## Mission Statement
 
-During the global Covid19 pandemic the austrian government decreed that, depending on the size of the building, only a certain amount of people are allowed to stay indoors (`n` employees/m²). In essence that meant that at peak times, only 30 people are allowed to be present at any time of day.
+In response to regulatory requirements during the COVID-19 pandemic, the Austrian government implemented occupancy restrictions based on building capacity (measured in employees per square meter). For our facility, this translated to a maximum occupancy of 30 people at any given time.
+The Presence Bot was developed to address this compliance requirement through the following objectives:
 
-The presence bot's primary goals were to:
-
-```mermaid
-flowchart
-
-Count[Count Employees] --> Interpret[Interpret Criticality]
-Interpret --> Decide[Decide Communication Channel]
-Decide --> Publish[Publish Notification]
-```
+1. Tracks real-time office occupancy through automated employee presence monitoring
+1. Assesses compliance status against regulatory occupancy thresholds
+1. Delivers automated notifications to staff regarding occupancy levels and compliance status
+1. Maintains synchronization with a physical display device that indicates current occupancy and compliance status through visual indicators (LED-lights, Display)
 
 ## System Context
 
@@ -31,14 +27,14 @@ Decide --> Publish[Publish Notification]
 
 ## Technical Context
 
-| **Actor**          | **Description**                                                                                                                                                                                                                                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[Access System]**  | Keeps track of all employees entering the office.                                                                                                                                                                                                                                                                      |
-| **[Access API]**     | Provides an access point to the access system.                                                                                                                                                                                                                                                                         |
+| **Actor**            | **Description**                                                                                                                                                                                                                                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Access System**  | Keeps track of all employees entering the office.                                                                                                                                                                                                                                                                      |
+| **Access API**     | Provides an access point to the access system.                                                                                                                                                                                                                                                                         |
 | **[Presence Bot]**   | Periodically polls the current employee count and triggers a power automate flow with the current employee count.                                                                                                                                                                                                      |
-| **[Messaging API]**  | Facade that hides technical details needed to trigger a power automate flow.                                                                                                                                                                                                                                           |
-| **[Power Automate]** | Bridge that allows us to communicate with company resources in an authenticated manner without breaking company regulations. Interprets the criticality, and builds a formatted message to be sent to the companies communication hub (MS Teams). Periodically pushes a teams messages for simplified contact tracing. |
-| **[Presence Twin]**  | Virtual counter part and digital twin to a Presence Cube. Through the twin users and machines can interact with physical devices.                                                                                                                                                                                       |
+| **Messaging API**  | Facade that hides technical details needed to trigger a power automate flow.                                                                                                                                                                                                                                           |
+| **Power Automate** | Bridge that allows us to communicate with company resources in an authenticated manner without breaking company regulations. Interprets the criticality, and builds a formatted message to be sent to the companies communication hub (MS Teams). Periodically pushes a teams messages for simplified contact tracing. |
+| **[Presence Twin]**  | Virtual counter part and digital twin to a Presence Cube. Through the twin users and machines can interact with physical devices.                                                                                                                                                                                      |
 | **[Presence UI]**    | User interface capable of visualizing and interacting with the Presence Twin. This UI enables users to directly look up current presence information as well as directly look up current presence information. without having to accquire an expensive / time consuming physical device                                |
 | **[Presence Cube]**  | Physical device that displays presence infos and notifications on-site.                                                                                                                                                                                                                                                |
 
@@ -52,7 +48,9 @@ Decide --> Publish[Publish Notification]
 
 - [Presence Docs]
 
-[presence twin]  ./presence-twin
-[presence cube]  /docs/presence-cube
-[presence ui]  /docs/presence-ui
-[Presence docs]  /docs/presence-docs
+[presence twin]: ./presence-twin
+[presence cube]: /docs/presence-cube
+[presence ui]: /docs/presence-ui
+[presence docs]: /docs/presence-docs
+[presence bot]: /docs
+[messaging api]: /docs/messaging-api
