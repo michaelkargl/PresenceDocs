@@ -20,7 +20,7 @@ npm run start
 To run or extend the docs, you will have some tools installed. We recommend
 checking out the CI pipeline for details on base setup and versions.
 
-* [CI Pipeline](/.gitlab-ci.yml)
+* [CI Pipeline](/.github/workflows/ci.yml)
 * VSCode
 * Node
 * NPM
@@ -91,17 +91,17 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-The page is deployed using [Gitlab CI] so no manual intervention is necessary for the actual deployment process. To enable docusaurus to find static resources like styling or images, `url` and `baseUrl` have to be set to point at addresses and paths of the to-be-deployed system.
+The page is deployed using [GitHub Actions] so no manual intervention is necessary for the actual deployment process. To enable docusaurus to find static resources like styling or images, `url` and `baseUrl` have to be set to point at addresses and paths of the to-be-deployed system.
 
-**Example: The page is hosted in gitlab pages at https://ohsnaparts.gitlab.io/osasoftworks/zube/presence-docs/docs/presence-ui/**
+**Example: The page is hosted in GitHub Pages at https://michaelkargl.github.io/PresenceDocs/**
 
 ```json
 {
     //...
     // base url of the web server
-    "url": "https://ohsnaparts.gitlab.io/",
+    "url": "https://michaelkargl.github.io",
     // path pointing to the page hosted at `url`
-    "baseUrl": "/osasoftworks/zube/presence-docs/",
+    "baseUrl": "/PresenceDocs/",
     //...
 }
 ```
@@ -119,7 +119,7 @@ See the [Docusaurus Docs][Docusaurus Updating] on how to update the application.
 1. Done
 
 [Docusaurus Updating]: https://docusaurus.io/docs/installation#updating-your-docusaurus-version
-[Gitlab CI]: ./.gitlab-ci.yml
+[GitHub Actions]: ./.github/workflows/ci.yml
 [Docusaurus]: https://v2.docusaurus.io/
 [@docusaurus/core]: https://www.npmjs.com/package/@docusaurus/core?activeTab=versions
 [Semver]: https://semver.org/#summary

@@ -1,12 +1,11 @@
 name: CI
 on:
   push:
-    branches: [gh-pages]
+    branches: [master]
   workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/dotnet/sdk:9.0
     permissions:
       contents: write
       pages: write
