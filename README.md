@@ -9,6 +9,8 @@
 <hr/>
 <br/>
 
+![](images/screenshot.png)
+
 ## Reading the docs
 
 ```pwsh
